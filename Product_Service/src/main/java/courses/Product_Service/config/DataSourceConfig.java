@@ -1,9 +1,10 @@
-package src.main.java.courses.Product_Service.config;
+package courses.Product_Service.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.Getter;
 import lombok.Setter;
+import org.flywaydb.core.Flyway;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,16 @@ public class DataSourceConfig {
         hikariConfig.setPassword(password);
 
         return new HikariDataSource(hikariConfig);
+    }
+
+    @Bean
+    public Flyway flyway() {
+        Flyway flyway = Flyway.configure()
+        .dataSource(dataSource())
+        .baselineOnMigrate(true)
+        .load();
+        flyway.migrate();
+        return flyway;
     }
 
 }

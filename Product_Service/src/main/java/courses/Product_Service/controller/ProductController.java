@@ -1,10 +1,11 @@
-package src.main.java.courses.Product_Service.controller;
+package courses.Product_Service.controller;
 
+import entity.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import src.main.java.courses.Product_Service.dto.Product;
-import src.main.java.courses.Product_Service.service.ProductService;
+import courses.Product_Service.service.ProductService;
+
 
 import java.util.List;
 
